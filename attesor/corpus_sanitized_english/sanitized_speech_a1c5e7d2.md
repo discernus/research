@@ -1,5 +1,3 @@
-# john_mccain_2008_concession.txt
-
 Thank you, thank you my friends. Thank you for coming here on this beautiful evening.
 
 My friends, we have come to the end of a long journey. The American people have spoken, and they have spoken clearly. A little while ago, I had the honor of calling my opponent to congratulate him - please - to congratulate him on being elected the next president of the country that we both love.
