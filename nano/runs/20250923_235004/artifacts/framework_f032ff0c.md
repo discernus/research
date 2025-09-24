@@ -3,21 +3,17 @@
 ## Abstract & Raison d'être
 
 **What is this framework?**
-A minimalist framework for measuring basic positive vs negative sentiment with derived metrics to validate complete pipeline functionality including statistical analysis.
+A minimalist framework for measuring basic positive vs negative sentiment to validate pipeline functionality.
 
 **What problem does it solve?**
-Provides a framework that triggers derived metrics calculation and statistical analysis while maintaining minimal computational cost.
+Provides the simplest possible framework to test end-to-end integration of the Discernus analysis pipeline.
 
 **Who is it for?**
-Test suite developers and pipeline maintainers who need to validate the complete pipeline including calculation agents and statistical synthesis.
+Test suite developers and pipeline maintainers who need to validate system functionality with minimal computational cost.
 
-## Theoretical & Empirical Foundations
+## Theoretical Foundations
 
-This framework is grounded in basic sentiment analysis theory, measuring the presence of positive and negative emotional language in text with derived balance metrics.
-
-**Key Citations:**
-- Pang, B., & Lee, L. (2008). Opinion mining and sentiment analysis. Foundations and Trends in Information Retrieval, 2(1-2), 1-135. This foundational work established the theoretical basis for computational sentiment analysis.
-- Liu, B. (2012). Sentiment analysis and opinion mining. Synthesis Lectures on Human Language Technologies, 5(1), 1-167. Provides comprehensive theoretical foundations for sentiment analysis methodologies.
+This framework is grounded in basic sentiment analysis theory, measuring the presence of positive and negative emotional language in text.
 
 ## Analytical Methodology
 
@@ -25,13 +21,9 @@ This framework is grounded in basic sentiment analysis theory, measuring the pre
 - Positive Sentiment (0.0-1.0): Presence of positive language and optimistic expressions
 - Negative Sentiment (0.0-1.0): Presence of negative language and pessimistic expressions
 
-**Derived Metrics:**
-- Net Sentiment: Balance between positive and negative sentiment (positive - negative)
-- Sentiment Magnitude: Average emotional intensity (positive + negative) / 2
-
 ## Intended Application & Corpus Fit
 
-**Target Corpus Description**: Short text documents with clear emotional content, organized by sentiment categories for statistical comparison.
+**Target Corpus Description**: Short text documents with clear emotional content.
 
 **Known Limitations**: Designed for testing purposes only, not for serious sentiment analysis.
 
@@ -39,14 +31,14 @@ This framework is grounded in basic sentiment analysis theory, measuring the pre
 
 ```yaml
 metadata:
-  framework_name: "sentiment_with_derived_metrics_v1"
+  framework_name: "sentiment_binary_v1"
   framework_version: "1.0.0"
   author: "Test Suite"
   spec_version: "10.0"
 
 analysis_variants:
   default:
-    description: "Basic sentiment analysis with derived metrics"
+    description: "Basic sentiment analysis"
     analysis_prompt: |
       You are analyzing text for sentiment. Score 0.0-1.0 for each dimension.
 
@@ -74,15 +66,11 @@ dimensions:
         - "success"
         - "wonderful"
         - "fantastic"
-        - "superb"
-        - "marvelous"
       negative_examples:
         - "terrible"
         - "failure"
         - "awful"
         - "disastrous"
-        - "dreadful"
-        - "calamitous"
     scoring_calibration:
       high: "0.7-1.0: Strong positive presence"
       medium: "0.4-0.6: Moderate positive elements"
@@ -98,28 +86,18 @@ dimensions:
         - "failure"
         - "awful"
         - "disastrous"
-        - "dreadful"
-        - "calamitous"
       negative_examples:
         - "good"
         - "excellent"
         - "wonderful"
         - "fantastic"
-        - "superb"
-        - "marvelous"
     scoring_calibration:
       high: "0.7-1.0: Strong negative presence"
       medium: "0.4-0.6: Moderate negative elements"
       low: "0.1-0.3: Weak negative indicators"
       absent: "0.0: No negative language"
 
-derived_metrics:
-  - name: "net_sentiment"
-    description: "Net sentiment balance (positive - negative)"
-    formula: "dimensions.positive_sentiment.raw_score - dimensions.negative_sentiment.raw_score"
-  - name: "sentiment_magnitude"
-    description: "Average emotional intensity (positive + negative) / 2"
-    formula: "(dimensions.positive_sentiment.raw_score + dimensions.negative_sentiment.raw_score) / 2"
+derived_metrics: []
 
 output_schema:
   type: object
